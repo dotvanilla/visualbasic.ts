@@ -6,22 +6,33 @@ Imports vbproj = Microsoft.VisualBasic.ApplicationServices.Development.VisualStu
 
 Public Class Scanner
 
-    ReadOnly vbproj As vbproj
+    ReadOnly project As vbproj
     ReadOnly assembly As AssemblyInfo
 
     Public ReadOnly Property Workspace As Workspace
 
     Sub New(vbproj As vbproj)
-        Me.vbproj = vbproj
         Me.assembly = vbproj.AssemblyInfo
+        Me.project = vbproj
         Me.Workspace = New Workspace(vbproj.RootNamespace)
     End Sub
+
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="filepath">
+    ''' the file path to the target vbproj file
+    ''' </param>
+    ''' <returns></returns>
+    Public Shared Function FromFile(filepath As String) As Scanner
+        Return New Scanner(vbproj.Load(filepath))
+    End Function
 
     ''' <summary>
     ''' scan all vb source files of current vbproj
     ''' </summary>
     Public Function ScanVBFiles() As Workspace
-        For Each file As String In vbproj.EnumerateSourceFiles(skipAssmInfo:=True, fullName:=True)
+        For Each file As String In project.EnumerateSourceFiles(skipAssmInfo:=True, fullName:=True)
             Call ScanVBFile(file)
         Next
 
