@@ -17,7 +17,12 @@ Public Class Workspace
 
     Sub New(ns As String)
         RootNamespace = ns
-        GlobalImports = New String() {}
+        GlobalImports = New String() {
+            "Microsoft.VisualBasic",
+            "System",
+            "System.Collections",
+            "System.Collections.Generic"
+        }
     End Sub
 
     Public Overrides Function ToString() As String

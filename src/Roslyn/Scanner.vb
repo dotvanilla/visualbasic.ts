@@ -46,8 +46,14 @@ Public Class Scanner
         Dim context As New FileContext(syntax, Workspace)
 
         For Each obj As StatementSyntax In syntax.Members
-
+            If TypeOf obj Is ModuleBlockSyntax Then
+                Call AddModule(obj, file:=context)
+            End If
         Next
+    End Sub
+
+    Private Sub AddModule([module] As ModuleBlockSyntax, file As FileContext)
+
     End Sub
 
 End Class
