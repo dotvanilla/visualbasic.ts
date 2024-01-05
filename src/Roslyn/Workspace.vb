@@ -9,9 +9,15 @@ Public Class Workspace
     ''' </summary>
     ''' <returns></returns>
     Public ReadOnly Property RootNamespace As String
+    ''' <summary>
+    ''' the global namespace imports
+    ''' </summary>
+    ''' <returns></returns>
+    Public ReadOnly Property GlobalImports As IReadOnlyCollection(Of String)
 
     Sub New(ns As String)
         RootNamespace = ns
+        GlobalImports = New String() {}
     End Sub
 
     Public Overrides Function ToString() As String
