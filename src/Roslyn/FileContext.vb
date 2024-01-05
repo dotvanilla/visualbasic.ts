@@ -38,8 +38,8 @@ Public Class FileContext
     ''' </summary>
     ''' <param name="name"></param>
     ''' <returns></returns>
-    Public Overloads Function [GetType](name As String)
-
+    Public Overloads Function [GetType](name As String) As CLRType
+        Throw New NotImplementedException
     End Function
 
 End Class

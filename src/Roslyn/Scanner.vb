@@ -43,7 +43,7 @@ Public Class Scanner
         Dim syntax As CompilationUnitSyntax = VisualBasicSyntaxTree _
            .ParseText(filepath.SolveStream) _
            .GetRoot
-        Dim context As New FileContext(syntax)
+        Dim context As New FileContext(syntax, Workspace)
 
         For Each obj As StatementSyntax In syntax.Members
 
