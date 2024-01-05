@@ -1,13 +1,21 @@
-﻿Public Class Workspace
+﻿
+''' <summary>
+''' workspace object for solving the clr type reference
+''' </summary>
+Public Class Workspace
 
-    Public ReadOnly Property [Namespace] As String
+    ''' <summary>
+    ''' the root namespace of current assembly
+    ''' </summary>
+    ''' <returns></returns>
+    Public ReadOnly Property RootNamespace As String
 
     Sub New(ns As String)
-        [Namespace] = ns
+        RootNamespace = ns
     End Sub
 
     Public Overrides Function ToString() As String
-        Return [Namespace]
+        Return RootNamespace
     End Function
 
 End Class
